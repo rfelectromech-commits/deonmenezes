@@ -193,49 +193,20 @@ export default function OurGallery() {
   // Prevent scrolling when modal is open and force viewport to top
   useEffect(() => {
     if (selectedImage) {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-      
+      window.scrollTo({ top: 0, behavior: 'auto' });
+
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = '0';
-      document.body.style.left = '0';
-      document.body.style.width = '100%';
-      document.body.style.height = '100%';
-      
-      document.addEventListener('touchmove', preventScroll, { passive: false });
-      document.addEventListener('wheel', preventScroll, { passive: false });
     } else {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.width = '';
-      document.body.style.height = '';
-      
-      document.removeEventListener('touchmove', preventScroll);
-      document.removeEventListener('wheel', preventScroll);
     }
 
     return () => {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.width = '';
-      document.body.style.height = '';
-      
-      document.removeEventListener('touchmove', preventScroll);
-      document.removeEventListener('wheel', preventScroll);
     };
   }, [selectedImage]);
-
-  const preventScroll = (e) => {
-    e.preventDefault();
-    return false;
-  };
 
   // Close modal on escape key
   useEffect(() => {
@@ -343,7 +314,7 @@ export default function OurGallery() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               whileHover={{ y: -10 }}
               onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'instant' });
+                window.scrollTo({ top: 0, behavior: 'auto' });
                 setSelectedImage(image);
               }}
             >
