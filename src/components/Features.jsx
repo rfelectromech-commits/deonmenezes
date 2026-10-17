@@ -11,6 +11,8 @@ import img5 from "../assets/rf6.jpg"
 import img6 from "../assets/rf7.jpg"
 import img7 from "../assets/rf8.jpg"
 import img8 from "../assets/rf9.jpg"
+import motorRewindingImg from "../assets/motor-rewinding.jpg"
+import itSoftwareImg from "../assets/it-software.jpg"
 
 const services = [
   {
@@ -88,6 +90,28 @@ const services = [
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a1 1 0 01-1-1V9a1 1 0 011-1h1a2 2 0 100-4H4a1 1 0 01-1-1V4a1 1 0 011-1h3a1 1 0 001-1z" />
+      </svg>
+    )
+  },
+  {
+    id: 'motor-rewinding',
+    title: "Motor Rewinding Services",
+    description: "Rewinding, repair, and testing of AC/DC motors, pumps, and generators to restore full performance and extend service life.",
+    image: motorRewindingImg,
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    )
+  },
+  {
+    id: 'it-software-development',
+    title: "IT & Software Development",
+    description: "Custom software, web applications, and industrial IT solutions that digitise operations and connect your systems.",
+    image: itSoftwareImg,
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
       </svg>
     )
   }

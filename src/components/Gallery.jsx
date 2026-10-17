@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { getViewportSettings } from '../lib/utils';
 import iso from "../assets/iso.jpg"
-import iso2 from "../assets/iso2.jpg"
+import icvAdnoc from "../assets/icv-adnoc.png"
 
 const features = [
   {
@@ -261,9 +261,8 @@ export default function Gallery() {
             >
               We are{' '}
               <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
-                ISO Certified
+                ISO & ICV Certified
               </span>
-              {' '}- 9001 & 14001
             </motion.h3>
           </motion.div>
 
@@ -291,7 +290,7 @@ export default function Gallery() {
               </div>
             </motion.div>
 
-            {/* ISO 14001 Certificate */}
+            {/* ADNOC ICV Certificate */}
             <motion.div
               className="group relative bg-white/80 rounded-2xl border border-blue-200/50 overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-blue-500/20"
               initial={{ opacity: 0, y: 40 }}
@@ -305,10 +304,10 @@ export default function Gallery() {
               
               <div className="relative z-10 p-8">
                 {/* Certificate Image */}
-                <img decoding="async" 
-                  src={iso2} 
-                  alt="ISO 14001:2015 Certificate" 
-                  className="w-full h-80 object-cover rounded-xl"
+                <img decoding="async"
+                  src={icvAdnoc}
+                  alt="ADNOC ICV In-Country Value Certified"
+                  className="w-full max-w-md h-auto mx-auto rounded-xl"
                 />
               </div>
             </motion.div>

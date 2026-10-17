@@ -1,6 +1,8 @@
 import { useParams, Navigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import fabImage from "../assets/fab.jpeg";
+import motorRewindingImg from "../assets/motor-rewinding.jpg";
+import itSoftwareImg from "../assets/it-software.jpg";
 
 console.log("fabImage:", fabImage); // Add this line temporarily
 
@@ -349,6 +351,91 @@ RF Electromech Services is your trusted partner for comprehensive maintenance an
       "Emergency Repairs",
       "Equipment Diagnostics",
       "Performance Optimization",
+    ],
+  },
+  "motor-rewinding": {
+    title: "Motor Rewinding Services",
+    description: "Motor Rewinding, Repair & Testing by RF Electromech Services",
+    fullDescription: `⚙️ Motor Rewinding Services
+Motor Rewinding, Repair & Testing by RF Electromech Services
+At RF Electromech Services, we restore burnt-out, damaged, and underperforming electric motors to reliable working condition. Our workshop handles rewinding and overhaul of industrial motors, helping you avoid the cost and lead time of full replacement while minimising downtime.
+
+🔧 Our Motor Rewinding Services Include:
+✅ Rewinding
+AC Induction Motors (Single & Three Phase)
+DC Motors, Armatures & Field Coils
+Submersible & Pump Motors
+Generators & Alternators
+
+✅ Repair & Overhaul
+Stator & Rotor Inspection
+Bearing Replacement & Shaft Repair
+Varnishing, Baking & Insulation Upgrades
+Dynamic Balancing
+
+✅ Testing & Diagnostics
+Insulation Resistance (Megger) Testing
+Winding Resistance & Surge Testing
+No-Load & Load Run Testing
+Vibration & Temperature Checks
+
+🛠️ Industries We Serve:
+Oil & Gas
+Steel & Pipe Manufacturing
+Water & Wastewater
+Marine
+HVAC & Building Services
+Manufacturing & Processing Plants
+
+📞 Contact us today to get your motors rewound, repaired, and back in service.`,
+    image: motorRewindingImg,
+    features: [
+      "AC/DC Motor Rewinding",
+      "Overhaul & Bearing Replacement",
+      "Insulation & Surge Testing",
+      "Fast Turnaround",
+    ],
+  },
+  "it-software-development": {
+    title: "IT & Software Development",
+    description: "Digital Solutions for Industrial Businesses",
+    fullDescription: `💻 IT & Software Development
+Digital Solutions for Industrial Businesses
+At RF Electromech Services, we combine our engineering background with modern software development to build digital tools that fit the way industrial businesses actually work. From business websites to custom applications that connect with your plant systems, we design, build, and support software that improves visibility and efficiency.
+
+🔧 Our IT & Software Services Include:
+✅ Software Development
+Custom Web & Mobile Applications
+Business Websites & Portals
+Dashboards & Reporting Tools
+Workflow & Process Automation
+
+✅ Industrial IT
+SCADA / HMI Data Integration
+IoT & Remote Monitoring Solutions
+Maintenance Management Systems
+Data Logging & Analytics
+
+✅ IT Infrastructure & Support
+Network Setup & Configuration
+System Integration & Upgrades
+Cloud Hosting & Deployment
+Ongoing Support & Maintenance
+
+🛠️ Industries We Serve:
+Oil & Gas
+Manufacturing & Processing Plants
+Energy & Utilities
+Construction & Infrastructure
+Trading & Logistics
+
+📞 Contact us today to discuss your next software or IT project.`,
+    image: itSoftwareImg,
+    features: [
+      "Custom Software",
+      "Web & Mobile Apps",
+      "Industrial IoT & Dashboards",
+      "IT Support",
     ],
   },
   "erection-commissioning": {

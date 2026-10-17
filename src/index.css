@@ -86,26 +86,27 @@ body {
   will-change: transform;
 }
 
-/* Logo marquees: translate by exactly -1/3 since the list is tripled, so it
-   loops seamlessly without a hardcoded pixel distance. */
+/* Logo marquees: the strip holds two identical copies, so -50% is exactly one
+   copy's width and the loop is seamless. Duration comes from the component so
+   speed stays constant regardless of logo count or screen width. */
 @keyframes marqueeLeft {
   from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-33.3334%, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes marqueeRight {
-  from { transform: translate3d(-33.3334%, 0, 0); }
+  from { transform: translate3d(-50%, 0, 0); }
   to { transform: translate3d(0, 0, 0); }
 }
 
-.animate-marquee-left {
-  animation: marqueeLeft 25s linear infinite;
+.animate-marquee-left,
+.animate-marquee-right {
+  animation: marqueeLeft var(--marquee-duration, 50s) linear infinite;
   will-change: transform;
 }
 
 .animate-marquee-right {
-  animation: marqueeRight 30s linear infinite;
-  will-change: transform;
+  animation-name: marqueeRight;
 }
 
 @keyframes heroKenBurns {

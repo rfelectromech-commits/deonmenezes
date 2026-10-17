@@ -1,27 +1,28 @@
 import { motion } from "framer-motion";
 import { getViewportSettings } from '../lib/utils';
-import client1 from "../assets/client1.jpeg"
-//import client2 from "../assets/client2.jpeg"
-import client3 from "../assets/client3.jpeg"
-//import client4 from "../assets/client4.jpeg"
-import client5 from "../assets/client5.jpeg"
-import client6 from "../assets/client6.jpeg"
-import client7 from "../assets/client7.png"
-import client8 from "../assets/client8.png"
-import client9 from "../assets/client9.jpeg"
-import client11 from "../assets/client11.jpg"
-import client12 from "../assets/client12.png"
-//import client13 from "../assets/client13.jpeg"
-import client14 from "../assets/client14.jpeg"
-import client15 from "../assets/client15.png"
-import client16 from "../assets/client16.png"
-import client17 from "../assets/client17.jpeg"
-import client18 from "../assets/client18.jpg"
-import client19 from "../assets/client19.jpg"
-import client20 from "../assets/client20.png"
-import client21 from "../assets/client21.jpeg"
-//import client22 from "../assets/client22.jpeg"
+// Transparent, tightly-cropped versions of the client logos (originals kept in ../assets).
+import ajSteelLogo from "../assets/logos/client1.png"
+import agsiLogo from "../assets/logos/client3.png"
+import arcelorMittalLogo from "../assets/logos/client5.png"
+import adnocLogo from "../assets/logos/client6.png"
+import nmdcLogo from "../assets/logos/client7.png"
+import npccLogo from "../assets/logos/client8.png"
+import emsteelLogo from "../assets/logos/client9.png"
+import jazeeraSteelLogo from "../assets/logos/client11.png"
+import alGharbiaLogo from "../assets/logos/client12.png"
+import jindalLogo from "../assets/logos/client14.png"
+import etihadRailLogo from "../assets/logos/client15.png"
+import donaldsonLogo from "../assets/logos/client16.png"
+import micodaLogo from "../assets/logos/client17.png"
+import armGroupLogo from "../assets/logos/client18.png"
+import giscoLogo from "../assets/logos/client19.png"
+import alMasaoodLogo from "../assets/logos/client20.png"
+import anabeebLogo from "../assets/logos/client21.png"
+import alGhurairFoodsLogo from "../assets/logos/al-ghurair.png"
+import adsbLogo from "../assets/logos/adsb.png"
+import khansahebLogo from "../assets/logos/khansaheb.png"
 
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const clients = [
@@ -91,81 +92,70 @@ const clients = [
 ];
 
 const clientCompanies = [
-  {
-    id: 1,
-    logo: client1, // Placeholder - add your logo src here
-   
-  },
-  {
-    id: 3,
-    logo: client3, // Placeholder - add your logo src here
-  },
-  {
-    id: 5,
-    logo: client5, // Placeholder - add your logo src here
-  },
-  {
-    id: 6,
-    logo: client6, // Placeholder - add your logo src here
-  },
-  {
-    id: 7,
-    logo: client7, // Placeholder - add your logo src here
-  },
-  {
-    id: 9,
-    logo: client8, // Placeholder - add your logo src here
-  },
-  {
-    id: 10,
-    logo: client9, // Placeholder - add your logo src here
-  },
-  {
-    id: 11,
-    logo: client11, // Placeholder - add your logo src here
-  },
-  {
-    id: 12,
-    logo: client12, // Placeholder - add your logo src here
-  },
-  {
-    id: 14,
-    logo: client14, // Placeholder - add your logo src here
-  },
-
-  {
-    id: 15,
-    logo: client15, // Placeholder - add your logo src here
-  },
-  {
-    id: 16,
-    logo: client16, // Placeholder - add your logo src here
-  },
-  {
-    id: 17,
-    logo: client17, // Placeholder - add your logo src here
-  },
-  {
-    id: 18,
-    logo: client18, // Placeholder - add your logo src here
-  },
-  {
-    id: 19,
-    logo: client19, // Placeholder - add your logo src here
-  },
-  {
-    id: 20,
-    logo: client20, // Placeholder - add your logo src here
-  },
-  {
-    id: 21,
-    logo: client21, // Placeholder - add your logo src here
-  },
-  // {
-  //   id: 22,
-  //   logo: client22, // Placeholder - add your logo src here
-  // },
+  { name: "AJ Steel", logo: ajSteelLogo },
+  { name: "Arabian Gulf Steel Industries", logo: agsiLogo },
+  { name: "ArcelorMittal", logo: arcelorMittalLogo },
+  { name: "ADNOC", logo: adnocLogo },
+  { name: "NMDC Dredging & Marine", logo: nmdcLogo },
+  { name: "NPCC", logo: npccLogo },
+  { name: "Emsteel", logo: emsteelLogo },
+  { name: "Jazeera Steel", logo: jazeeraSteelLogo },
+  { name: "Al Gharbia", logo: alGharbiaLogo },
+  { name: "Jindal", logo: jindalLogo },
+  { name: "Etihad Rail", logo: etihadRailLogo },
+  { name: "Donaldson", logo: donaldsonLogo },
+  { name: "MICODA", logo: micodaLogo },
+  { name: "ARM Group", logo: armGroupLogo },
+  { name: "GISCO", logo: giscoLogo },
+  { name: "Al Masaood", logo: alMasaoodLogo },
+  { name: "ANABEEB", logo: anabeebLogo },
+  { name: "Al Ghurair Foods", logo: alGhurairFoodsLogo },
+  { name: "ADSB - Abu Dhabi Ship Building", logo: adsbLogo },
+  { name: "Khansaheb", logo: khansahebLogo },
 ];
+
+const MARQUEE_SPEED_PX_PER_S = 40;
+
+// Logos keep their natural width at a fixed height with the same gap after each
+// one, so spacing is uniform. The strip holds two identical copies; translating
+// by exactly -50% is seamless. Duration is measured so speed stays constant.
+function LogoMarquee({ logos, direction, className }) {
+  const stripRef = useRef(null);
+  const [duration, setDuration] = useState(null);
+
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip) return;
+    const update = () => setDuration(strip.scrollWidth / 2 / MARQUEE_SPEED_PX_PER_S);
+    const ro = new ResizeObserver(update); // re-measure as logos load / on resize
+    ro.observe(strip);
+    return () => ro.disconnect();
+  }, []);
+
+  return (
+    <div className={`relative overflow-hidden py-6 bg-white/60 rounded-2xl border border-blue-200/50 ${className}`}>
+      <div
+        ref={stripRef}
+        className={`animate-marquee-${direction} flex w-max items-center`}
+        style={duration ? { '--marquee-duration': `${duration}s` } : { animationPlayState: 'paused' }}
+      >
+        {[0, 1].map((copy) =>
+          logos.map((company) => (
+            <img
+              key={`${copy}-${company.name}`}
+              decoding="async"
+              src={company.logo}
+              alt={copy === 1 ? '' : company.name}
+              aria-hidden={copy === 1 ? true : undefined}
+              className="h-14 w-auto max-w-[180px] object-contain flex-shrink-0 mr-16"
+              draggable={false}
+            />
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function Clients() {
   const navigate = useNavigate();
@@ -303,27 +293,9 @@ export default function Clients() {
           </h3>
         </motion.div>
 
-        {/* Moving Company Logos - First Row */}
-        <div className="relative overflow-hidden py-6 mb-8 bg-white/60 rounded-2xl border border-blue-200/50">
-          <div className="animate-marquee-left flex space-x-12">
-            {[...clientCompanies.slice(0, Math.ceil(clientCompanies.length/2)), ...clientCompanies.slice(0, Math.ceil(clientCompanies.length/2)), ...clientCompanies.slice(0, Math.ceil(clientCompanies.length/2))].map((company, idx) => (
-              <div key={`row1-${company.id}-${idx}`} className="flex-shrink-0 w-40 h-20 flex items-center justify-center">
-                <img decoding="async" src={company.logo} alt={`Client ${company.id}`} className="max-w-full max-h-full object-contain" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Moving Company Logos - Second Row */}
-        <div className="relative overflow-hidden py-6 mb-16 bg-white/60 rounded-2xl border border-blue-200/50">
-          <div className="animate-marquee-right flex space-x-12">
-            {[...clientCompanies.slice(Math.ceil(clientCompanies.length/2)), ...clientCompanies.slice(Math.ceil(clientCompanies.length/2)), ...clientCompanies.slice(Math.ceil(clientCompanies.length/2))].map((company, idx) => (
-              <div key={`row2-${company.id}-${idx}`} className="flex-shrink-0 w-40 h-20 flex items-center justify-center">
-                <img decoding="async" src={company.logo} alt={`Client ${company.id}`} className="max-w-full max-h-full object-contain" />
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Moving Company Logos */}
+        <LogoMarquee className="mb-8" direction="left" logos={clientCompanies.slice(0, Math.ceil(clientCompanies.length / 2))} />
+        <LogoMarquee className="mb-16" direction="right" logos={clientCompanies.slice(Math.ceil(clientCompanies.length / 2))} />
 
         
       </div>

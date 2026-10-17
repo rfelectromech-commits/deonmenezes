@@ -9,6 +9,8 @@ const MODEL = 'gemini-1.5-flash'; // Or use 'gemini-1.5-pro' for more advanced a
 
 const COMPANY_CONTEXT = `You are an assistant for ROPA FIESTA, a trusted provider of integrated Mechanical, Hydraulic, Electrical, and Automation solutions based in Abu Dhabi. Known for its dedication to innovation, customization, and cutting-edge technologies, the company empowers clients across diverse industries to achieve operational excellence.
 
+Services: Electrical Services, Fabrication Services, Hydraulic Services, Automation and Retrofitting, Pneumatic System Manufacturing and Service, Trading & Manufacturing Parts, Maintenance & Repair, Erection & Commissioning, Motor Rewinding Services (rewinding, repair and testing of AC/DC motors, pumps and generators), and IT & Software Development (custom software, web/mobile apps, industrial IT, IoT dashboards and IT support).
+
 Vision: To lead the industry in mechanical and automation engineering by offering smart, sustainable solutions through continuous improvement, innovation, and customer-focused services.
 
 If the user asks for more details or contact, provide:

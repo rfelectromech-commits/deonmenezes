@@ -14,7 +14,7 @@ import { Link, NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import logo from "../assets/logo.jpg";
 import iso from "../assets/iso.jpg";
-import iso2 from "../assets/iso2.jpg";
+import icvAdnoc from "../assets/icv-adnoc.png";
 
 const navLinks = [
   { label: "Home", to: "/", icon: <Home className="w-5 h-5 mr-2" /> },
@@ -160,16 +160,16 @@ const Navbar = () => {
           <motion.img decoding="async"
             src={iso}
             alt="ISO Certification"
-            className="w-20 h-20 object-contain rounded-sm shadow-sm cursor-pointer"
+            className="h-12 w-auto rounded-md shadow-sm cursor-pointer"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           />
         </HashLink>
         <HashLink to="#iso-certified" smooth>
           <motion.img decoding="async"
-            src={iso2}
-            alt="ICV Certification"
-            className="w-20 h-20 object-contain rounded-sm shadow-sm cursor-pointer"
+            src={icvAdnoc}
+            alt="ADNOC ICV Certified"
+            className="h-12 w-auto rounded-md shadow-sm cursor-pointer"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           />
