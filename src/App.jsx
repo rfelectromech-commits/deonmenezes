@@ -19,7 +19,9 @@ import WhatsAppButton from './components/WhatsAppButton';
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Instant, not smooth: a smooth scroll here keeps animating after load/route
+    // change and fights the user if they grab the scrollbar mid-animation.
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname]);
   return null;
 }
@@ -28,7 +30,10 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="overflow-x-hidden min-h-screen w-full bg-gradient-to-br from-blue-50 via-white to-blue-100 text-gray-800">
+      {/* overflow-x-clip, not overflow-x-hidden: "hidden" silently makes this div a
+          vertical scroll container too, and macOS trackpad swipes latch onto it
+          instead of the page, so scrolling "locks" until the next swipe. */}
+      <div className="overflow-x-clip min-h-screen w-full bg-gradient-to-br from-blue-50 via-white to-blue-100 text-gray-800">
         <Navbar />
         <div className="pt-20">
           <Routes>

@@ -169,32 +169,8 @@ export default function Features() {
       </div>
 
       {/* Floating Geometric Elements */}
-      <motion.div
-        className="absolute top-20 right-20 w-32 h-32 rounded-full bg-gradient-to-br from-blue-400/30 to-cyan-400/30 blur-xl hidden md:block"
-        animate={{
-          y: [0, -20, 0],
-          x: [0, 10, 0],
-          scale: [1, 1.1, 1]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-32 left-16 w-24 h-24 rounded-lg bg-gradient-to-br from-cyan-400/30 to-blue-500/30 blur-lg rotate-45 hidden md:block"
-        animate={{
-          y: [0, 15, 0],
-          x: [0, -15, 0],
-          rotate: [45, 60, 45]
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+      <div className="decor-shape-float absolute top-20 right-20 w-32 h-32 rounded-full bg-gradient-to-br from-blue-400/30 to-cyan-400/30 blur-xl hidden md:block" />
+      <div className="decor-shape-rotate absolute bottom-32 left-16 w-24 h-24 rounded-lg bg-gradient-to-br from-cyan-400/30 to-blue-500/30 blur-lg hidden md:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
@@ -215,7 +191,7 @@ export default function Features() {
             transition={{ duration: 0.6 }}
             className="mb-6 md:mb-8"
           >
-            <span className="inline-flex items-center px-4 py-1 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-700 border border-blue-500/20 backdrop-blur-sm">
+            <span className="inline-flex items-center px-4 py-1 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-700 border border-blue-500/20">
               <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
               Our Services
             </span>
@@ -250,7 +226,7 @@ export default function Features() {
             onClick={prevSlide}
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
-            className="absolute left-2 sm:left-4 md:left-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/80 backdrop-blur-sm border border-blue-500/30 text-blue-600 hover:bg-blue-500/20 hover:text-white transition-all duration-300 hover:scale-110"
+            className="absolute left-2 sm:left-4 md:left-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/80 border border-blue-500/30 text-blue-600 hover:bg-blue-500/20 hover:text-white transition-all duration-300 hover:scale-110"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -261,7 +237,7 @@ export default function Features() {
             onClick={nextSlide}
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
-            className="absolute right-2 sm:right-4 md:right-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/80 backdrop-blur-sm border border-blue-500/30 text-blue-600 hover:bg-blue-500/20 hover:text-white transition-all duration-300 hover:scale-110"
+            className="absolute right-2 sm:right-4 md:right-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/80 border border-blue-500/30 text-blue-600 hover:bg-blue-500/20 hover:text-white transition-all duration-300 hover:scale-110"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -293,10 +269,10 @@ export default function Features() {
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                 >
                   <Link to={`/services/${service.id}`}>
-                    <div className="relative h-[400px] sm:h-[450px] md:h-[500px] bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-blue-200/50 overflow-hidden hover:bg-white hover:shadow-lg transition-all duration-300 group-hover:scale-[1.02] sm:group-hover:scale-105 group-hover:shadow-lg sm:group-hover:shadow-2xl group-hover:shadow-blue-500/20 cursor-pointer">
+                    <div className="relative h-[400px] sm:h-[450px] md:h-[500px] bg-white/80 rounded-xl sm:rounded-2xl border border-blue-200/50 overflow-hidden hover:bg-white hover:shadow-lg transition-all duration-300 group-hover:scale-[1.02] sm:group-hover:scale-105 group-hover:shadow-lg sm:group-hover:shadow-2xl group-hover:shadow-blue-500/20 cursor-pointer">
                       {/* Background Image */}
                       <div className="absolute inset-0">
-                        <img
+                        <img decoding="async"
                           src={service.image}
                           alt={service.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -308,7 +284,7 @@ export default function Features() {
                       <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-6">
                         {/* Icon */}
                         <motion.div
-                          className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 rounded-lg sm:rounded-xl border border-blue-400/30 text-blue-600 mb-3 sm:mb-4 backdrop-blur-sm group-hover:bg-blue-500/30 group-hover:scale-110 transition-all duration-300"
+                          className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 rounded-lg sm:rounded-xl border border-blue-400/30 text-blue-600 mb-3 sm:mb-4 group-hover:bg-blue-500/30 group-hover:scale-110 transition-all duration-300"
                           whileHover={{ rotate: 10 }}
                         >
                           {service.icon}
@@ -359,31 +335,8 @@ export default function Features() {
       </div>
 
       {/* Animated Gradient Orbs */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 blur-xl sm:blur-3xl hidden sm:block"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 blur-xl sm:blur-3xl hidden sm:block"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2]
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-      />
+      <div className="decor-orb absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 blur-xl sm:blur-3xl hidden sm:block" />
+      <div className="decor-orb-slow absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 blur-xl sm:blur-3xl hidden sm:block" />
     </motion.section>
   );
 }

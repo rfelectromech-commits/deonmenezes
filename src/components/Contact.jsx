@@ -94,7 +94,7 @@ const Contact = () => {
 
         {/* Right Column - Contact Form (Smaller Width) */}
         <motion.div
-          className="w-full max-w-md bg-white/80 text-gray-800 p-6 rounded-2xl shadow-xl border border-blue-200/50 backdrop-blur-lg z-10 self-start"
+          className="w-full max-w-md bg-white/80 text-gray-800 p-6 rounded-2xl shadow-xl border border-blue-200/50 z-10 self-start"
           initial={{ x: 60, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}

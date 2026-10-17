@@ -126,7 +126,7 @@ INSTALLATION LLC. is a leading provider of integrated Mechanical, Hydraulic, Ele
           {features.map((feature, i) => (
             <motion.div
               key={feature.label}
-              className="flex flex-col items-center p-8 bg-neutral-50/50 backdrop-blur-sm rounded-xl border border-neutral-200/30 hover:bg-white hover:shadow-sm transition-all duration-200 group"
+              className="flex flex-col items-center p-8 bg-neutral-50/50 rounded-xl border border-neutral-200/30 hover:bg-white hover:shadow-sm transition-all duration-200 group"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}

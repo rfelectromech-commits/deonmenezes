@@ -10,7 +10,7 @@ export default function ProjectHighlight() {
       transition={{ duration: 1, type: 'spring', stiffness: 60 }}
     >
       {/* Animated Background Image */}
-      <motion.img
+      <motion.img decoding="async"
         src="https://res.cloudinary.com/ddodvrq4x/image/upload/v1749052774/Website_demo/bridge_bk.png"
         alt="Structure"
         className="absolute inset-0 w-full h-full object-cover opacity-20"
@@ -32,7 +32,7 @@ export default function ProjectHighlight() {
 
       {/* Testimonial Card */}
       <motion.div
-        className="relative z-20 max-w-2xl bg-white/90 p-10 text-gray-800 ml-auto mt-40 mr-[200px] shadow-2xl rounded-2xl backdrop-blur-lg border border-blue-200/50"
+        className="relative z-20 max-w-2xl bg-white/90 p-10 text-gray-800 ml-auto mt-40 mr-[200px] shadow-2xl rounded-2xl border border-blue-200/50"
         initial={{ x: 80, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.8, type: 'spring', stiffness: 60 }}

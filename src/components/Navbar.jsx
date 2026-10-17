@@ -91,7 +91,7 @@ const Navbar = () => {
           className="cursor-pointer"
         >
           <Link to="/">
-            <img
+            <img decoding="async"
               src={logo}
               alt="Logo"
               className="w-20 max-h-16 object-contain rounded-sm"
@@ -157,7 +157,7 @@ const Navbar = () => {
       {/* ISO and ICV Icons - Top Right */}
       <div className="hidden md:flex items-center gap-4 absolute top-2 right-4 z-50">
         <HashLink to="#iso-certified" smooth>
-          <motion.img
+          <motion.img decoding="async"
             src={iso}
             alt="ISO Certification"
             className="w-20 h-20 object-contain rounded-sm shadow-sm cursor-pointer"
@@ -166,7 +166,7 @@ const Navbar = () => {
           />
         </HashLink>
         <HashLink to="#iso-certified" smooth>
-          <motion.img
+          <motion.img decoding="async"
             src={iso2}
             alt="ICV Certification"
             className="w-20 h-20 object-contain rounded-sm shadow-sm cursor-pointer"

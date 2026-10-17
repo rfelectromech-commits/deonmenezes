@@ -198,32 +198,8 @@ export default function Clients() {
       </div>
 
       {/* Floating Geometric Elements */}
-      <motion.div
-        className="absolute top-20 right-20 w-32 h-32 rounded-full bg-gradient-to-br from-blue-400/30 to-cyan-400/30 blur-xl"
-        animate={{
-          y: [0, -20, 0],
-          x: [0, 10, 0],
-          scale: [1, 1.1, 1]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-32 left-16 w-24 h-24 rounded-lg bg-gradient-to-br from-cyan-400/30 to-blue-500/30 blur-lg rotate-45"
-        animate={{
-          y: [0, 15, 0],
-          x: [0, -15, 0],
-          rotate: [45, 60, 45]
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+      <div className="decor-shape-float absolute top-20 right-20 w-32 h-32 rounded-full bg-gradient-to-br from-blue-400/30 to-cyan-400/30 blur-xl" />
+      <div className="decor-shape-rotate absolute bottom-32 left-16 w-24 h-24 rounded-lg bg-gradient-to-br from-cyan-400/30 to-blue-500/30 blur-lg" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header Section */}
@@ -244,7 +220,7 @@ export default function Clients() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <span className="inline-flex items-center px-6 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-700 border border-blue-500/20 backdrop-blur-sm">
+            <span className="inline-flex items-center px-6 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-700 border border-blue-500/20">
               <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
               Key Customers
             </span>
@@ -277,7 +253,7 @@ export default function Clients() {
           {clients.map((client, idx) => (
             <motion.div
               key={idx}
-              className="group relative h-32 bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-200/50 overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-blue-500/20 cursor-pointer flex items-center justify-center"
+              className="group relative h-32 bg-white/80 rounded-2xl border border-blue-200/50 overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-blue-500/20 cursor-pointer flex items-center justify-center"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -290,7 +266,7 @@ export default function Clients() {
               
               {/* Content */}
               <div className="relative z-10 text-center px-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl border border-blue-400/30 flex items-center justify-center backdrop-blur-sm group-hover:bg-gradient-to-br group-hover:from-blue-500/30 group-hover:to-cyan-500/30 transition-all duration-300 mx-auto mb-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl border border-blue-400/30 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-blue-500/30 group-hover:to-cyan-500/30 transition-all duration-300 mx-auto mb-3">
                   {client.icon}
                 </div>
                 <h3 className="text-sm font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300 text-center">
@@ -314,7 +290,7 @@ export default function Clients() {
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.7 }}
         >
-          <span className="inline-flex items-center px-6 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-700 border border-blue-500/20 backdrop-blur-sm mb-6">
+          <span className="inline-flex items-center px-6 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-700 border border-blue-500/20 mb-6">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
             Trusted Partners
           </span>
@@ -328,56 +304,33 @@ export default function Clients() {
         </motion.div>
 
         {/* Moving Company Logos - First Row */}
-        <div className="relative overflow-hidden py-6 mb-8 bg-white/60 backdrop-blur-sm rounded-2xl border border-blue-200/50">
-          <motion.div className="flex space-x-12" animate={{ x: [0, -2000] }} transition={{ duration: 25, repeat: Infinity, ease: "linear", repeatType: "loop" }}>
+        <div className="relative overflow-hidden py-6 mb-8 bg-white/60 rounded-2xl border border-blue-200/50">
+          <div className="animate-marquee-left flex space-x-12">
             {[...clientCompanies.slice(0, Math.ceil(clientCompanies.length/2)), ...clientCompanies.slice(0, Math.ceil(clientCompanies.length/2)), ...clientCompanies.slice(0, Math.ceil(clientCompanies.length/2))].map((company, idx) => (
               <div key={`row1-${company.id}-${idx}`} className="flex-shrink-0 w-40 h-20 flex items-center justify-center">
-                <img src={company.logo} alt={`Client ${company.id}`} className="max-w-full max-h-full object-contain" />
+                <img decoding="async" src={company.logo} alt={`Client ${company.id}`} className="max-w-full max-h-full object-contain" />
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Moving Company Logos - Second Row */}
-        <div className="relative overflow-hidden py-6 mb-16 bg-white/60 backdrop-blur-sm rounded-2xl border border-blue-200/50">
-          <motion.div className="flex space-x-12" animate={{ x: [-2000, 0] }} transition={{ duration: 30, repeat: Infinity, ease: "linear", repeatType: "loop" }}>
+        <div className="relative overflow-hidden py-6 mb-16 bg-white/60 rounded-2xl border border-blue-200/50">
+          <div className="animate-marquee-right flex space-x-12">
             {[...clientCompanies.slice(Math.ceil(clientCompanies.length/2)), ...clientCompanies.slice(Math.ceil(clientCompanies.length/2)), ...clientCompanies.slice(Math.ceil(clientCompanies.length/2))].map((company, idx) => (
               <div key={`row2-${company.id}-${idx}`} className="flex-shrink-0 w-40 h-20 flex items-center justify-center">
-                <img src={company.logo} alt={`Client ${company.id}`} className="max-w-full max-h-full object-contain" />
+                <img decoding="async" src={company.logo} alt={`Client ${company.id}`} className="max-w-full max-h-full object-contain" />
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         
       </div>
 
       {/* Animated Gradient Orbs */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2]
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-      />
+      <div className="decor-orb absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-3xl" />
+      <div className="decor-orb-slow absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-3xl" />
     </motion.section>
   );
 }

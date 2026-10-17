@@ -447,7 +447,7 @@ export default function ServiceDetail() {
           >
             <div className="relative group max-w-4xl mx-auto">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-              <img
+              <img decoding="async"
                 src={service.image}
                 alt={service.title}
                 className="relative w-full object-contain rounded-xl shadow-2xl"
@@ -467,7 +467,7 @@ export default function ServiceDetail() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
+            <div className="bg-white/70 rounded-2xl p-8 shadow-xl border border-white/20">
               <div className="prose prose-lg max-w-none">
                 <div className="text-gray-700 leading-relaxed whitespace-pre-line text-lg">
                   {service.fullDescription}
@@ -499,7 +499,7 @@ export default function ServiceDetail() {
                 >
                   <Link
                     to={`/services/${key}`}
-                    className="block bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-white/30 hover:border-blue-300 group h-full"
+                    className="block bg-white/80 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-white/30 hover:border-blue-300 group h-full"
                   >
                     <div className="flex items-center mb-4">
                       <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mr-3 group-hover:scale-110 transition-transform"></div>

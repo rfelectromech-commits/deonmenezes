@@ -50,7 +50,10 @@ export function useResponsiveViewport(customSettings = {}) {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [customSettings]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- customSettings is only
+    // used to seed initial state; callers pass a fresh object literal every render
+    // (default param `= {}`), so including it here caused an infinite render loop.
+  }, []);
 
   return viewportSettings;
 }

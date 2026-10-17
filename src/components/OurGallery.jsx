@@ -254,7 +254,7 @@ export default function OurGallery() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-flex items-center px-6 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-700 border border-blue-500/20 backdrop-blur-sm mb-8">
+          <span className="inline-flex items-center px-6 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-700 border border-blue-500/20 mb-8">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
             Our Work
           </span>
@@ -283,7 +283,7 @@ export default function OurGallery() {
             <motion.button
               key={category.key}
               onClick={() => setActiveCategory(category.key)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border backdrop-blur-sm ${
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border ${
                 activeCategory === category.key
                   ? 'bg-blue-600 text-white border-blue-700 shadow-lg shadow-blue-500/25'
                   : 'bg-white/80 text-gray-700 border-blue-200/50 hover:bg-blue-50 hover:border-blue-300'
@@ -308,7 +308,7 @@ export default function OurGallery() {
           {filteredImages.map((image, index) => (
             <motion.div
               key={`${activeCategory}-${image.id}`}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-200/50 overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-blue-500/20 cursor-pointer"
+              className="group relative bg-white/80 rounded-2xl border border-blue-200/50 overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-blue-500/20 cursor-pointer"
               initial={{ opacity: 0, y: 40, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
@@ -321,7 +321,7 @@ export default function OurGallery() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl"></div>
               
               <div className="relative overflow-hidden">
-                <img
+                <img decoding="async"
                   src={image.src}
                   alt="Gallery image"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
@@ -401,7 +401,7 @@ export default function OurGallery() {
                 flexDirection: 'column'
               }}
             >
-              <img
+              <img decoding="async"
                 src={selectedImage.src}
                 alt="Gallery image"
                 style={{

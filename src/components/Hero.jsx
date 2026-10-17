@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 // === STEP 1: IMPORT YOUR NEW IMAGES HERE ===
-import myNewSlide1 from "../assets/car1.png";
-import myNewSlide2 from "../assets/car2.png";
-import finalSlide4 from "../assets/car3.png"; 
+import myNewSlide1 from "../assets/car1.jpg";
+import myNewSlide2 from "../assets/car2.jpg";
+import finalSlide4 from "../assets/car3.jpg";
 
 // === STEP 2: DEFINE YOUR SLIDER IMAGES ARRAY ===
 const backgroundSliderImages = [myNewSlide1, myNewSlide2, finalSlide4];
@@ -148,19 +148,10 @@ export default function Hero() {
                 x: isCurrentImage ? { type: "spring", stiffness: 50, damping: 25, duration: 2.5 } : { duration: 0 },
               }}
             >
-              <motion.img
+              <motion.img decoding="async"
                 src={image}
                 alt={`Background Slider Image ${index + 1}`}
-                className="w-full h-full object-cover"
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 20,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
+                className="hero-kenburns w-full h-full object-cover"
               />
             </motion.div>
           );
@@ -264,20 +255,8 @@ export default function Hero() {
         >
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
-            animate={{ 
-              opacity: 1, 
-              y: 0,
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{ 
-              opacity: { delay: 0.8, duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] },
-              y: { delay: 0.8, duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] },
-              backgroundPosition: {
-                duration: 20,
-                ease: "easeInOut",
-                repeat: Infinity,
-              }
-            }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-3xl md:text-4xl font-bold leading-tight mb-0 pb-1 -ml-4 md:-ml-2"
             style={{
               background: "linear-gradient(-45deg, #ffffff, #1e40af, #1e3a8a, #ffffff)",
@@ -304,35 +283,13 @@ export default function Hero() {
               WebkitTextStroke: "0.5px rgba(255, 255, 255, 0.6)",
               textShadow: "0 0 8px rgba(255, 255, 255, 0.4), 0 0 16px rgba(255, 255, 255, 0.2)",
             }}
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              backgroundPosition: {
-                duration: 120,
-                ease: "easeInOut",
-                repeat: Infinity,
-              }
-            }}
           >
             tailored for the world's most demanding industries.{' '}
             <motion.span
               className="font-medium"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ 
-                opacity: 1, 
-                scale: 1,
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{ 
-                delay: 2, 
-                duration: 0.6,
-                backgroundPosition: {
-                  duration: 120,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                }
-              }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 2, duration: 0.6 }}
               style={{
                 background: "linear-gradient(-45deg, #ffffff, #60a5fa, #2563eb, #ffffff)",
                 backgroundSize: "400% 400%",

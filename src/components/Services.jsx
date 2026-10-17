@@ -136,7 +136,7 @@ export default function Services() {
         {cards.map((card, i) => (
           <motion.div
             key={card.id}
-            className="relative bg-white/80 rounded-xl overflow-hidden shadow-xl hover:shadow-blue-400/20 transition-shadow duration-300 flex flex-col border border-blue-200/50 backdrop-blur-lg z-10 will-change-transform"
+            className="relative bg-white/80 rounded-xl overflow-hidden shadow-xl hover:shadow-blue-400/20 transition-shadow duration-300 flex flex-col border border-blue-200/50 z-10 will-change-transform"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={getViewportSettings({ amount: 0.05 })}
@@ -154,7 +154,7 @@ export default function Services() {
             </motion.div>
             
             <div className="relative flex-grow">
-              <motion.img
+              <motion.img decoding="async"
                 src={card.img}
                 alt={card.title}
                 className="w-full h-56 sm:h-60 md:h-64 object-cover rounded-t-xl"
